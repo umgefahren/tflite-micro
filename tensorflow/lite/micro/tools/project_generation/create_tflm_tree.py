@@ -41,12 +41,12 @@ def _get_dirs(file_list):
   dirs = set()
   for filepath in file_list:
     dirs.add(os.path.dirname(filepath))
-  return dirs
+  return dirs 
 
 
 def _get_file_list(key, makefile_options, tensorflow_root):
   params_list = [
-      "make", "-f",
+      "gmake", "-f",
       tensorflow_root + "tensorflow/lite/micro/tools/make/Makefile", key
   ] + makefile_options.split()
   process = subprocess.Popen(params_list,
@@ -268,7 +268,7 @@ def main():
   # no longer be needed once all the downloads are switched over to bash
   # scripts.
   params_list = [
-      "make", "-f", tensorflow_root +
+      "gmake", "-f", tensorflow_root +
       "tensorflow/lite/micro/tools/make/Makefile", "third_party_downloads"
   ] + makefile_options.split()
   process = subprocess.Popen(params_list,
